@@ -9,6 +9,7 @@ using Microsoft.EntityFrameworkCore;
 namespace TestApi.API.Controllers
 {
     //http:localhost:5000/api/weatherforecast
+    [Authorize]
     [ApiController]
     [Route("api/[controller]")]
     public class ValuesController : ControllerBase
@@ -19,6 +20,7 @@ namespace TestApi.API.Controllers
             _context = context;
         }
         //GET api/values
+        [AllowAnonymous]
         [HttpGet]
         public async Task<IActionResult> GetValues()
         {
@@ -27,6 +29,7 @@ namespace TestApi.API.Controllers
         }
 
         //GET api/values/5
+        [AllowAnonymous]
         [HttpGet("{id}")]
         public async Task<IActionResult> GetValue(int id)
         {
